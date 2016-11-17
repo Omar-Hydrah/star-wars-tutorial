@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include partials/head.ejs %>
+</head>
+<body>
+<% include partials/header.ejs %>
+
+<div id="hero-image-single" style="background-image:url('/images/<%= movies[episode].hero_image %>');" >
+	<% // The episode variable is a number can be used to access the index of the episode inside the movies array. %>
+	<h1 id="hero-title"><%= movies[episode].title %></h1>
+</div>
+<div class="content-padding clearfix">
+	
+	<div class="poster-wrapper">
+		<img src="/images/<%= movies[episode].poster %>" class="img-responsive" />
+	</div>
+
+	<div class="description-wrapper">
+		<div class="description"></div>
+		<h2 class="movie-header">Description</h2>
+		<p><%= movies[episode].description %></p>
+
+		<div class="main-characters">
+			<h2 class="movie-header">Main characters</h2>
+			<ul>
+				<% // We're looping through the main characters array inside of the object  %>
+				<% // corresponsing to the episode number %>
+
+				<% for(var i = 0; i < movies[episode].main_characters.length; i++){ %>
+					<li><%= movies[episode].main_characters[i] %></li>
+				<% } %>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+<% include partials/footer.ejs %>
+<% include partials/scripts.ejs %>
+</body>
+</html>
